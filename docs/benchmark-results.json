@@ -1,0 +1,38 @@
+{
+  "database": "PostgreSQL local test instance; not a Supabase capacity guarantee",
+  "runners": 12,
+  "simulated_hours_each": 3,
+  "sample_seconds": 2,
+  "points_uploaded": 64812,
+  "wall_seconds": 23.958,
+  "batch_p50_ms": 781.48,
+  "batch_p95_ms": 1193.14,
+  "gps_relation_bytes": 26017792,
+  "gps_total_rows": 108024,
+  "bytes_per_point_including_index": 240.9,
+  "history_query_plan": [
+    "Limit  (cost=0.42..417.47 rows=200 width=139) (actual time=0.029..0.083 rows=200.00 loops=1)",
+    "  Buffers: shared hit=11",
+    "  ->  Index Scan using gps_track_points_pkey on gps_track_points  (cost=0.42..8933.64 rows=4284 width=139) (actual time=0.027..0.069 rows=200.00 loops=1)",
+    "        Index Cond: ((session_id = '31afd851-8731-4ddd-a110-13c455f8b567'::uuid) AND (seq > 1000))",
+    "        Index Searches: 1",
+    "        Buffers: shared hit=11",
+    "Planning:",
+    "  Buffers: shared hit=44",
+    "Planning Time: 0.279 ms",
+    "Execution Time: 0.118 ms"
+  ],
+  "summary_query_plan": [
+    "Index Scan using running_sessions_participant_id_key on running_sessions  (cost=8.30..16.33 rows=1 width=20) (actual time=0.045..0.052 rows=1.00 loops=1)",
+    "  Index Cond: (participant_id = (InitPlan 1).col1)",
+    "  Index Searches: 1",
+    "  Buffers: shared hit=8",
+    "  InitPlan 1",
+    "    ->  Index Scan using running_sessions_pkey on running_sessions running_sessions_1  (cost=0.14..8.16 rows=1 width=16) (actual time=0.025..0.037 rows=1.00 loops=1)",
+    "          Index Cond: (id = '31afd851-8731-4ddd-a110-13c455f8b567'::uuid)",
+    "          Index Searches: 1",
+    "          Buffers: shared hit=4",
+    "Planning Time: 0.125 ms",
+    "Execution Time: 0.279 ms"
+  ]
+}
